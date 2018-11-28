@@ -10,79 +10,64 @@ git clone https://github.com/pzn2513/LAMP.git
 chown 700 -R LAMP/bin
 LAMP/bin/lamp-install
 ```
+等待安装
 
-MySQL--获取临时登录密码，修改权限
+MySQL--获取临时登录密码，修改密码
 ```bash
 - grep 'temporary password' /var/log/mysqld.log
 - alter user 'root'@'localhost' identified by 'Abc.123456';
+
+其他操作
 - show variables like 'character%';
 - select host,user,plugin,authentication_string from mysql.user;
 - use mysql;
 - insert user VALUES ('localhost', 'pzn', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', '', '', '', '', '0', '0', '0', '0', 'mysql_native_password', '*84AAC12F54AB666ECFC2A83C676908C8BBC381B1', 'N', '2018-04-21 11:25:16', null, 'N', 'Y', 'Y', null, null);
 - FLUSH PRIVILEGES;
 ```
-MySQL8的配置有更改，如果无法成功配置可以[联系我](#bugs--issues)
+MySQL8的配置变化比较大，如果无法成功配置可以寻求帮助，见[Bugs & Issues](#bugs--issues)
 
 
 Default Location
 ================
-| Apache Location            | Path                                           |
-|----------------------------|------------------------------------------------|
-| Install Prefix             | /usr/local/apache                              |
-| Web root location          | /data/www/default                              |
-| Main Configuration File    | /usr/local/apache/conf/httpd.conf              |
-| Default Virtual Host conf  | /usr/local/apache/conf/extra/httpd-vhosts.conf |
-| Virtual Host location      | /data/www/virtual_host_names                   |
-| Virtual Host log location  | /data/wwwlog/virtual_host_names                |
-| Virtual Host conf          | /usr/local/apache/conf/vhost/virtual_host.conf |
+| Apache Location            | Path                                             |
+|----------------------------|--------------------------------------------------|
+| Install Prefix             | /usr/local/apache24                              |
+| Web root location          | /usr/local/apache24/htdocs                       |
+| Main Configuration File    | /usr/local/apache24/conf/httpd.conf              |
+| Virtual Host conf          | /usr/local/apache24/conf/extra/httpd-vhosts.conf |
+| SSL Host conf              | /usr/local/apache24/conf/extra/httpd-vhosts.conf |
 
-| phpMyAdmin Location        | Path                                           |
-|----------------------------|------------------------------------------------|
-| Installation location      | /data/www/default/phpmyadmin                   |
+| phpMyAdmin Location        | Path                                             |
+|----------------------------|--------------------------------------------------|
+| Installation location      | /usr/local/apache24/htdocs/phpMySQLAdmin-secret  |
 
-| KodExplorer Location       | Path                                           |
-|----------------------------|------------------------------------------------|
-| Installation location      | /data/www/default/kod                          |
+| PHP Location               | Path                                             |
+|----------------------------|--------------------------------------------------|
+| Install Prefix             | /usr/local/php                                   |
+| Configuration File         | /usr/local/php/etc/php.ini                       |
 
-| PHP Location               | Path                                           |
-|----------------------------|------------------------------------------------|
-| Install Prefix             | /usr/local/php                                 |
-| Configuration File         | /usr/local/php/etc/php.ini                     |
-| ini additional location    | /usr/local/php/php.d                           |
+| MySQL Location             | Path                                             |
+|----------------------------|--------------------------------------------------|
+| Install Prefix             | /usr/local/mysql                                 |
+| Data Location              | /usr/local/mysql/data                            |
+| my.cnf Configuration File  | /etc/my.cnf                                      |
 
-| MySQL Location             | Path                                           |
-|----------------------------|------------------------------------------------|
-| Install Prefix             | /usr/local/mysql                               |
-| Data Location              | /usr/local/mysql/data                          |
-| my.cnf Configuration File  | /etc/my.cnf                                    |
-
-| MariaDB Location           | Path                                           |
-|----------------------------|------------------------------------------------|
-| Install Prefix             | /usr/local/mariadb                             |
-| Data Location              | /usr/local/mariadb/data                        |
-| my.cnf Configuration File  | /etc/my.cnf                                    |
-
-| Percona Location           | Path                                           |
-|----------------------------|------------------------------------------------|
-| Install Prefix             | /usr/local/percona                             |
-| Data Location              | /usr/local/percona/data                        |
-| my.cnf Configuration File  | /etc/my.cnf                                    |
 
 Process Management
 ==================
-| Process     | Command                                                 |
-|-------------|---------------------------------------------------------|
-| Apache      | /etc/init.d/httpd  (start\|stop\|status\|restart)       |
-| MySQL       | /etc/init.d/mysqld (start\|stop\|status\|restart)       |
-| Redis-Server| /etc/init.d/redis-server (start\|stop\|restart)         |
+| Process     | Command                                                         |
+|-------------|-----------------------------------------------------------------|
+| Apache      | /usr/local/apache24/bin/apachectl (start\|stop\|status\|restart)|
+| MySQL       | systemctl (start\|stop\|status\|restart) mysqld.service         |
 
 lamp Command
 ============
-| Command    | Description                     |
-|------------|---------------------------------|
-| lamp add   | create a virtual host           |
-| lamp list  | list all virtual host           |
-| lamp del   | remove a virtual host           |
+| Command        | Description                                                                         |
+|----------------|-------------------------------------------------------------------------------------|
+| lamp-init      | 初始化各个配置文件                                                                    |
+| addvhost (site)| 添加vhost，在/home下创建site目录                                                      |
+| addssl (site)  | 添加ssl，在/home下创建site目录，需要在/usr/local/apache24/cert/(site)配置证书文件       |
+| addboth (site) | 添加vhost和ssl，在/home下创建site目录，需要在/usr/local/apache24/cert/(site)配置证书文件|
 
 Bugs & Issues
 =============
