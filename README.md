@@ -83,4 +83,4 @@ License
 =======
 Copyright (C) 2016 - 2018 PZN
 
-Licensed under the [GPLv3](https://github.com/pzn2513/LICENSE) License.
+Licensed under the [GPLv3](https://github.com/pzn2513/LICENSE/blob/master/README.md) License.
