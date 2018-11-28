@@ -75,9 +75,8 @@ lamp Command
 
 Bugs & Issues
 =============
-Please feel free to report any bugs or issues to us, email to: i@teddysun.com or [open issues](https://github.com/teddysun/lamp/issues) on Github.
+Please feel free to report any bugs or issues to us, email to: pznforwork@outlook.com or [open issues](https://github.com/pzn2513/LAMP-autoinstall/issues) on Github.
 
-Support(Chinese): https://lamp.sh/support.html
 
 License
 =======
