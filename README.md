@@ -21,7 +21,7 @@ MySQL--获取临时登录密码，修改权限
 - insert user VALUES ('localhost', 'pzn', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', '', '', '', '', '0', '0', '0', '0', 'mysql_native_password', '*84AAC12F54AB666ECFC2A83C676908C8BBC381B1', 'N', '2018-04-21 11:25:16', null, 'N', 'Y', 'Y', null, null);
 - FLUSH PRIVILEGES;
 ```
-MySQL8的配置有更改，如果无法成功配置可以[联系我](#Bugs & Issues)
+MySQL8的配置有更改，如果无法成功配置可以[联系我](#bugs--issues)
 
 
 Default Location
