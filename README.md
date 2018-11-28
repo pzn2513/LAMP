@@ -6,7 +6,9 @@ CentOS + Apache2.4 + PHP7 + MySQL8 + phpMyAdmin 一键安装
 ```bash
 cd ~
 yum install git
-git clone 
+git clone https://github.com/pzn2513/LAMP.git
+chown 700 -R LAMP/bin
+LAMP/bin/lamp-install
 ```
 
 MySQL--获取临时登录密码，修改权限
@@ -19,6 +21,8 @@ MySQL--获取临时登录密码，修改权限
 - insert user VALUES ('localhost', 'pzn', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', 'Y', '', '', '', '', '0', '0', '0', '0', 'mysql_native_password', '*84AAC12F54AB666ECFC2A83C676908C8BBC381B1', 'N', '2018-04-21 11:25:16', null, 'N', 'Y', 'Y', null, null);
 - FLUSH PRIVILEGES;
 ```
+MySQL8的配置有更改，如果无法成功配置可以[联系我](#Bugs & Issues)
+
 
 Default Location
 ================
