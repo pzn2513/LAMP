@@ -1,7 +1,14 @@
 # LAMP-autoinstall
 CentOS + Apache2.4 + PHP7 + MySQL8 + phpMyAdmin 一键安装
 
-# 使用指南：
+# 安装指南：
+使用root连接服务器
+```bash
+cd ~
+yum install git
+git clone 
+```
+
 MySQL--获取临时登录密码，修改权限
 ```bash
 - grep 'temporary password' /var/log/mysqld.log
