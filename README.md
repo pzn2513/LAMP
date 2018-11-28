@@ -7,7 +7,7 @@ CentOS + Apache2.4 + PHP7 + MySQL8 + phpMyAdmin 一键安装
 cd ~
 yum install -y git
 git clone https://github.com/pzn2513/LAMP.git
-chown 700 -R LAMP/bin
+chmod 700 -R LAMP/bin
 LAMP/bin/lamp-install
 ```
 等待安装
