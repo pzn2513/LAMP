@@ -12,6 +12,8 @@ LAMP/bin/lamp-install
 ```
 等待安装
 
+
+
 MySQL--获取临时登录密码，修改密码
 ```bash
 - grep 'temporary password' /var/log/mysqld.log
@@ -71,7 +73,7 @@ lamp Command
 
 Bugs & Issues
 =============
-Please feel free to report any bugs or issues to us, email to: pznforwork@outlook.com or [open issues](https://github.com/pzn2513/LAMP-autoinstall/issues) on Github.
+Please feel free to report any bugs or issues to us, email to: pznforwork@outlook.com or [issues](https://github.com/pzn2513/LAMP-autoinstall/issues) on Github.
 
 
 License
