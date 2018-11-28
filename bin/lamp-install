@@ -79,4 +79,4 @@ systemctl enable mysqld.service
 lamp-init
 
 #获取临时登录密码
-grep 'LAMP安装配置完毕！MySQL临时登录密码(temporary password):' /var/log/mysqld.log
+grep 'temporary password' /var/log/mysqld.log
