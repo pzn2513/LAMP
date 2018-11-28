@@ -1,5 +1,6 @@
 # LAMP-autoinstall
 CentOS + Apache2.4 + PHP7 + MySQL8 + phpMyAdmin 一键安装
+整个安装流程有较酷炫的效果，外行看到会觉得很吊，适合装逼
 
 # 安装指南：
 使用root连接服务器
