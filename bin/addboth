@@ -1,6 +1,0 @@
-mkdir /usr/local/apache24/cert/$1
-mkdir /home/$1
-chown daemon /home/$1
-echo -e '\n<VirtualHost *:443>    \nDocumentRoot "/home/'$1'"    \nServerName https://'$1'    \nSSLEngine on    \nSSLCertificateFile "cert/'$1'/public.crt"    \nSSLCertificateKeyFile "cert/'$1'/private.key"    \nSSLCertificateChainFile "cert/'$1'/chain.crt"    \n<FilesMatch "\.(cgi|shtml|phtml|php)$">       \nSSLOptions +StdEnvVars    \n</FilesMatch>    \n<Directory "/home/'$1'">       \nSSLOptions +StdEnvVars       \nOptions  FollowSymLinks       \nAllowOverride all       \nOrder allow,deny       \nAllow from all    \n</Directory>\n</VirtualHost>' >> /usr/local/apache24/conf/extra/httpd-ssl.conf
-echo -e '\n<VirtualHost *:80>\n    ServerName '$1'\n    DocumentRoot    "/home/'$1'"\n    <Directory "/home/'$1'">\n        Options +Indexes +FollowSymLinks +ExecCGI\n        AllowOverride All\n        Order allow,deny\n        Allow from all\n    </Directory>\n</VirtualHost>' >> /usr/local/apache24/conf/extra/httpd-vhosts.conf
-echo '添加证书路径：/usr/local/apache24/cert/'$1
