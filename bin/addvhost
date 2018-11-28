@@ -1,0 +1,3 @@
+mkdir /home/$1
+chown daemon /home/$1
+echo -e '\n<VirtualHost *:80>\n    ServerName '$1'\n    DocumentRoot    "/home/'$1'"\n    <Directory "/home/'$1'">\n        Options +Indexes +FollowSymLinks +ExecCGI\n        AllowOverride All\n        Order allow,deny\n        Allow from all\n    </Directory>\n</VirtualHost>' >> /usr/local/apache24/conf/extra/httpd-vhosts.conf

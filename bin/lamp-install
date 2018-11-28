@@ -1,6 +1,6 @@
 #用阿里云的纯净CentOS-7.4镜像
 #全部安装包打包链接：https://
-cd /root/lamnp
+cd /root/LAMP
 #yum install -y bzip2 bzip2-devel zip unzip gcc gcc-c++ expat-devel libxml2-devel autoconf automake libtool re2c bison mod_ssl openssl openssl-devel libcurl-devel libmcrypt-devel git
 yum install -y bzip2 bzip2-devel zip unzip gcc gcc-c++ expat-devel libxml2-devel autoconf automake libtool re2c mod_ssl openssl openssl-devel libcurl-devel libmcrypt-devel git libjpeg-devel libpng-devel libpng freetype-devel gmp-devel readline-devel libxslt-devel flex php-mcrypt zlib-devel mcrypt libicu-devel systemd-devel mhash postgresql-devel libxslt
 tar jxvf httpd-2.4.33.tar.bz2
@@ -15,7 +15,7 @@ mv apr-1.6.3 httpd-2.4.33/srclib/apr
 mv apr-util-1.6.1 httpd-2.4.33/srclib/apr-util
 #将解压后的apr-1.6.3，apr-util-1.6.1放到httpd-2.4.33/srclib下，用--with-included-apr指令会自动配置编译安装。
 cd pcre-8.42
-./configure --prefix=/root/lamnp/httpd-2.4.33/srclib/pcre
+./configure --prefix=/root/LAMP/httpd-2.4.33/srclib/pcre
 make&&make install
 
 cd ../nghttp2-1.32.0
@@ -38,7 +38,7 @@ ldconfig
 
 #安装apache
 cd ../httpd-2.4.33/
-./configure --prefix=/usr/local/apache24 --with-pcre=/root/lamnp/httpd-2.4.33/srclib/pcre --with-included-apr --with-ssl --with-nghttp2=/usr/local --with-mpm=worker --enable-modules=all --enable-mods-shared=all --enable-so --enable-ssl --enable-http2
+./configure --prefix=/usr/local/apache24 --with-pcre=/root/LAMP/httpd-2.4.33/srclib/pcre --with-included-apr --with-ssl --with-nghttp2=/usr/local --with-mpm=worker --enable-modules=all --enable-mods-shared=all --enable-so --enable-ssl --enable-http2
 make&&make install
 mkdir /usr/local/apache24/cert
 
@@ -56,7 +56,7 @@ make&&make install
 cp php.ini-development /usr/local/php/lib/php.ini
 
 
-echo 'export PATH=$PATH:/root/lamnp/bin' >> /etc/profile
+echo 'export PATH=$PATH:/root/LAMP/bin' >> /etc/profile
 echo 'export PATH=$PATH:/usr/local/php/bin' >> /etc/profile
 source /etc/profile
 
@@ -68,11 +68,16 @@ chown -R daemon /usr/local/apache24/htdocs/phpMySQLAdmin-secret
 
 
 #安装mysql8
+cd /root/LAMP
 wget  https://repo.mysql.com//mysql80-community-release-el7-1.noarch.rpm
 rpm -ivh mysql80-community-release-el7-1.noarch.rpm --force --nodeps
 yum install -y mysql-community-server
 #启动mysqld服务并加入开机自启动
 systemctl start mysqld.service
 systemctl enable mysqld.service
+
+#初始化配置文件
+lamp-init
+
 #获取临时登录密码
-grep 'temporary password' /var/log/mysqld.log
+grep 'LAMP安装配置完毕！MySQL临时登录密码(temporary password):' /var/log/mysqld.log

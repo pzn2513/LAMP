@@ -1,8 +1,0 @@
-#apache、mysql、phpmyadmin
-cp /root/lamnp/conf/httpd.conf /usr/local/apache24/conf/httpd.conf
-cp /root/lamnp/conf/httpd-ssl.conf /usr/local/apache24/conf/extra/httpd-ssl.conf
-cp /root/lamnp/conf/httpd-vhosts.conf /usr/local/apache24/conf/extra/httpd-vhosts.conf
-cp /root/lamnp/conf/my.cnf /etc/my.cnf
-cp /root/lamnp/conf/config.inc.php /usr/local/apache24/htdocs/phpMySQLAdmin-secret/config.inc.php
-/usr/local/apache24/bin/apachectl restart
-systemctl restart mysqld.service
