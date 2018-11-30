@@ -10,6 +10,7 @@ yum install -y git
 git clone https://github.com/pzn2513/LAMP.git
 chmod 700 -R LAMP/bin
 LAMP/bin/lamp-install
+#此行复制进去触发回车
 ```
 等待安装
 
