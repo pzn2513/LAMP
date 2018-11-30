@@ -10,13 +10,13 @@ yum install -y git
 git clone https://github.com/pzn2513/LAMP.git
 chmod 700 -R LAMP/bin
 LAMP/bin/lamp-install
-#此行复制进去触发回车
+mysql -uroot -p
 ```
-等待安装
+复制粘贴以上命令，等待安装……
 
 
-
-MySQL--获取临时登录密码，修改密码
+安装完成！
+获取MySQL临时密码，登陆后需修改密码
 ```bash
 - grep 'temporary password' /var/log/mysqld.log
 - alter user 'root'@'localhost' identified by 'Your.Password';
