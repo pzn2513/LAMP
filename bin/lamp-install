@@ -1,6 +1,7 @@
 #用阿里云的纯净CentOS-7.4镜像
 #全部安装包打包链接：https://
 cd /root/LAMP
+yum install -y epel-release
 yum install -y wget bzip2 bzip2-devel zip unzip gcc gcc-c++ expat-devel libxml2-devel autoconf automake libtool re2c mod_ssl openssl openssl-devel libcurl-devel libmcrypt-devel git libjpeg-devel libpng-devel libpng freetype-devel gmp-devel readline-devel libxslt-devel flex php-mcrypt zlib-devel mcrypt libicu-devel systemd-devel mhash postgresql-devel libxslt
 tar jxvf httpd-2.4.33.tar.bz2
 tar jxvf apr-1.6.3.tar.bz2
