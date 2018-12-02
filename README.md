@@ -51,7 +51,7 @@ Default Location
 | PHP Location               | Path                                             |
 |----------------------------|--------------------------------------------------|
 | Install Prefix             | /usr/local/php                                   |
-| Configuration File         | /usr/local/php/etc/php.ini                       |
+| Configuration File         | /usr/local/php/lib/php.ini                       |
 
 | MySQL Location             | Path                                             |
 |----------------------------|--------------------------------------------------|
