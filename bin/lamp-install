@@ -2,7 +2,9 @@
 #全部安装包打包链接：https://
 cd /root/LAMP
 yum install -y epel-release
-yum install -y wget bzip2 bzip2-devel zip unzip gcc gcc-c++ expat-devel libxml2-devel autoconf automake libtool re2c mod_ssl openssl openssl-devel libcurl-devel libmcrypt-devel git libjpeg-devel libpng-devel libpng freetype-devel gmp-devel readline-devel libxslt-devel flex php-mcrypt zlib-devel mcrypt libicu-devel systemd-devel mhash postgresql-devel libxslt
+yum install -y wget bzip2 bzip2-devel zip unzip gcc gcc-c++ expat-devel libxml2-devel autoconf automake libtool re2c mod_ssl openssl \
+openssl-devel libcurl-devel libmcrypt-devel git libjpeg-devel libpng-devel libpng freetype-devel gmp-devel readline-devel libxslt-devel \
+flex php-mcrypt zlib-devel mcrypt libicu-devel systemd-devel mhash postgresql-devel libxslt lrzsz libevent-devel
 tar jxvf httpd-2.4.33.tar.bz2
 tar jxvf apr-1.6.3.tar.bz2
 tar jxvf nghttp2-1.32.0.tar.bz2
@@ -38,19 +40,19 @@ ldconfig
 
 #安装apache
 cd ../httpd-2.4.33/
-./configure --prefix=/usr/local/apache24 --with-pcre=/root/LAMP/httpd-2.4.33/srclib/pcre --with-included-apr --with-ssl --with-nghttp2=/usr/local --with-mpm=worker --enable-modules=all --enable-mods-shared=all --enable-so --enable-ssl --enable-http2
+./configure --prefix=/usr/local/apache24 --with-pcre=/root/LAMP/httpd-2.4.33/srclib/pcre --with-included-apr --with-ssl --with-nghttp2=\
+/usr/local --with-mpm=worker --enable-modules=all --enable-mods-shared=all --enable-so --enable-ssl --enable-http2
 make&&make install
 mkdir /usr/local/apache24/cert
 
 
-#cd ../php-5.6.36
-#构建自动化配置 配置文件引入
-#./buildconf --force
-#./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache24/bin/apxs --with-pdo-mysql=mysqlnd --with-mysqli=mysqlnd --enable-mysqlnd --with-curl --enable-mbstring --with-openssl --with-mhash --enable-sockets --enable-soap --disable-fileinfo
-#libtool --finish libs
-
+#安装php7
 cd ../php-7.1.10
-./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache24/bin/apxs --with-curl --with-freetype-dir --with-gd --with-gettext --with-iconv-dir --with-kerberos --with-libdir=lib64 --with-libxml-dir --with-mysqli --with-openssl --with-pcre-regex --with-pdo-mysql --with-pdo-sqlite --with-pear --with-png-dir --with-xmlrpc --with-xsl --with-zlib --with-mhash --enable-fpm --enable-bcmath --enable-libxml --enable-inline-optimization --enable-gd-native-ttf --enable-mbregex --enable-mbstring --enable-opcache --enable-pcntl --enable-shmop --enable-soap --enable-sockets --enable-sysvsem --enable-xml --enable-zip --enable-mysqlnd
+./configure --prefix=/usr/local/php --with-apxs2=/usr/local/apache24/bin/apxs --with-curl --with-freetype-dir --with-gd --with-gettext \
+--with-iconv-dir --with-kerberos --with-libdir=lib64 --with-libxml-dir --with-mysqli --with-openssl --with-pcre-regex --with-pdo-mysql \
+--with-pdo-sqlite --with-pear --with-png-dir --with-xmlrpc --with-xsl --with-zlib --with-mhash --enable-fpm --enable-bcmath \
+--enable-libxml --enable-inline-optimization --enable-gd-native-ttf --enable-mbregex --enable-mbstring --enable-opcache --enable-pcntl \
+--enable-shmop --enable-soap --enable-sockets --enable-sysvsem --enable-xml --enable-zip --enable-mysqlnd
 make&&make install
 #php --ini        php -m
 cp php.ini-development /usr/local/php/lib/php.ini
