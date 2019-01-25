@@ -1,6 +1,6 @@
 #用阿里云的纯净CentOS-7.4镜像
 #全部安装包打包链接：https://
-cd /root/LAMP
+cd ../..
 yum install -y epel-release
 yum install -y wget bzip2 bzip2-devel zip unzip gcc gcc-c++ expat-devel libxml2-devel autoconf automake libtool re2c mod_ssl openssl \
 openssl-devel libcurl-devel libmcrypt-devel git libjpeg-devel libpng-devel libpng freetype-devel gmp-devel readline-devel libxslt-devel \
@@ -17,7 +17,7 @@ mv apr-1.6.3 httpd-2.4.33/srclib/apr
 mv apr-util-1.6.1 httpd-2.4.33/srclib/apr-util
 #将解压后的apr-1.6.3，apr-util-1.6.1放到httpd-2.4.33/srclib下，用--with-included-apr指令会自动配置编译安装。
 cd pcre-8.42
-./configure --prefix=/root/LAMP/httpd-2.4.33/srclib/pcre
+./configure --prefix=./httpd-2.4.33/srclib/pcre
 make&&make install
 
 cd ../nghttp2-1.32.0
@@ -40,7 +40,7 @@ ldconfig
 
 #安装apache
 cd ../httpd-2.4.33/
-./configure --prefix=/usr/local/apache24 --with-pcre=/root/LAMP/httpd-2.4.33/srclib/pcre --with-included-apr --with-ssl --with-nghttp2=\
+./configure --prefix=/usr/local/apache24 --with-pcre=./srclib/pcre --with-included-apr --with-ssl --with-nghttp2=\
 /usr/local --with-mpm=worker --enable-modules=all --enable-mods-shared=all --enable-so --enable-ssl --enable-http2
 make&&make install
 mkdir /usr/local/apache24/cert
@@ -58,7 +58,7 @@ make&&make install
 cp php.ini-development /usr/local/php/lib/php.ini
 
 
-echo 'export PATH=$PATH:/root/LAMP/bin' >> /etc/profile
+#echo 'export PATH=$PATH:/root/LAMP/bin' >> /etc/profile
 echo 'export PATH=$PATH:/usr/local/php/bin' >> /etc/profile
 source /etc/profile
 
